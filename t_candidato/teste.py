@@ -3,4 +3,3 @@
 import os
 
 arquivoentrada = open ('t_preenche_2014_2.csv', 'r')
-teste
