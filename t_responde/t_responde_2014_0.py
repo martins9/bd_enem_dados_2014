@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-arquivoentrada = open ('microdados_enem_2014.csv', 'r')
+arquivoentrada = open ('microdados_enem_2014_1.csv', 'r')
 arquivosaida = open ('t_responde_2014.csv', 'w')
 
 k=0
