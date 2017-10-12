@@ -37,7 +37,7 @@ for linha in arquivoentrada:
 	k=0
 	p=45
 	o=90
-	j=135
+	j=131
 
 arquivoentrada.close()
 arquivosaida.close()
