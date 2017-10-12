@@ -1,0 +1,1 @@
+time (python t_responde_2014.py) &> t_responde.log 
