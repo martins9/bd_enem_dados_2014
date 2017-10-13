@@ -12,7 +12,6 @@ j=135
 for linha in arquivoentrada:
 	texto = linha.split(",")
 
-
 	for char in texto[75]: # Resposta da Prova de CH
 		k=k+1
 
