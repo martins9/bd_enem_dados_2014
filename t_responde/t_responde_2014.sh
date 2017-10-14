@@ -2,10 +2,39 @@
 
 # Extraindo dados
 python t_responde_2014_0.py
+rm microdados_enem_2014_1.csv
 
 # Limpando os dados
 python t_responde_2014_1.py
 
-# Contando linhas
-QTD=$(wc --lines t_responde_2014_2.csv)
+# Excluindo os arquivos de base
+rm t_responde_2014_1.csv
 
+# Achando o caminho
+path1=$(pwd)
+
+# Fazendo split dos arquivos e colocando
+split -d -a6 -l 1000000 --additional-suffix=.csv t_responde_2014_2.csv $path1/t_responde_base/t_responde_2014_
+
+# Excluindo os arquivos de base
+rm t_responde_2014_2.csv
+
+# Contando quantos arquivos tem na pasta
+QTD_ARQ=$(find $path1/t_responde_base/ -type f | wc -l)
+
+# Pegando data e hora
+data=$(date "+%d/%m/%Y %H:%M:%S")
+echo "------------- START:" $data "-------------" > t_responde_log.txt
+
+QTD_ARQ1=$((QTD_ARQ-1))
+# Fazendo o Load das tabelas
+for i in $(seq -f "%06g" 0 $QTD_ARQ1)
+do
+    # psql -h localhost -d bd_enem_dados_local -U anacrl -c
+	time (psql -h localhost -d bd_enem_dados_local -U martins -c "\copy responde from $path1/t_responde_base/t_responde_2014_$i.csv
+	        with delimiter as ',' NULL AS 'null' csv") &>> t_responde_log.txt
+done
+
+# Pegando data e hora
+data1=$(date "+%d/%m/%Y %H:%M:%S")
+echo "---------------END:" $data1 "-------------------------" >> t_responde_log.txt
