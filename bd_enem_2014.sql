@@ -5,6 +5,13 @@
 -- DATA CRIAÇÃO: 11/06/2016 
 
 --------------------------------------------------------------------------------------------------------------
+-- Database e tabase criados no servidor. Data Criação: 22/06/2016
+
+CREATE DATABASE bd_enem_dados_2014
+CREATE TABLESPACE tablespace_enem_2014 LOCATION '/mnt/data/base_enem';
+ALTER DATABASE bd_enem_dados_2014 SET TABLESPACE tablespace_enem_2014; 
+
+--------------------------------------------------------------------------------------------------------------
 -- Tabela criada no servidor. DATA CRIAÇÃO: 22/06/2016
 -- Tabela revisada no servidor. DATA DA REVISÃO:26/06/2016
 
